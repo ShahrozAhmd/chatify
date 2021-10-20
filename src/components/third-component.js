@@ -11,8 +11,8 @@ function ThirdComponent() {
 
   return (
     <div>
-      <button onClick={()=>dispatch(addName("Fatima"))}>Add Name</button>
-      <button onClick={()=>dispatch(addId("029"))}>Add ID</button>
+      <button onClick={()=>dispatch(addName(""))}>Add Name</button>
+      <button onClick={()=>dispatch(addId(""))}>Add ID</button>
     </div>
   );
 }
