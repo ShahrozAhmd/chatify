@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useStore } from "../Context/store";
-import {addName,addId} from '../Context/actions'
+import { useStore } from "Context/store";
+import {addName,addId} from 'Context/actions'
 
 function ThirdComponent() {
 
