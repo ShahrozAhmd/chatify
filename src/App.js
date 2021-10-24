@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState, useReducer, useEffect, createContext } from "react";
-import FirstComponent from "./components/first-component";
-import { provider, auth } from "./Api/firebase";
+import FirstComponent from "./Components/first-component";
+import { provider, auth } from "./Configs/firebase";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 function App() {
   // const [count, setCount] = useState(0);

@@ -11,5 +11,3 @@ const StoreProvider = ({ children, initialState, reducer }) => {
 };
 
 export default StoreProvider;
-
-

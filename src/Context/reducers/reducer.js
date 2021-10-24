@@ -1,4 +1,4 @@
-import * as actions from "./action-types";
+import * as actions from "../action-types";
 
 export const initialState = {
 // initial state to be place here

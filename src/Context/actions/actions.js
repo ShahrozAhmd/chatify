@@ -1,4 +1,4 @@
-import * as actions from "./action-types";
+import * as actions from "../action-types";
 
 export const addName = (data) => {
   return {
