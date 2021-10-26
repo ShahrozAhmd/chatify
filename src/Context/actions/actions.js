@@ -13,3 +13,10 @@ export const addId = (data) => {
     payload: data,
   };
 };
+
+export const addFatherName = (data) => {
+  return {
+    type: actions.ADD_FATHER_NAME,
+    payload: data,
+  };
+};
