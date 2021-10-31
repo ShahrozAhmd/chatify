@@ -1,15 +1,34 @@
 import React from "react";
-import Logo from "Assets/images/logo.png";
+import { Image, Title, Button } from "Components";
+
 const Auth = () => {
   return (
-    <div className="w-full h-screen">
-      <div className="flex justify-center items-center w-full h-screen">
-        <div className="login-box-container w-2/5 h-2/4 border shadow rounded-sm bg-white">
-          <div className="elements-container flex flex-col justify-evenly items-center h-full w-full">
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-          </div>
+    <div
+      className="
+      flex 
+      justify-center 
+      items-center 
+      w-full  
+      h-screen"
+    >
+      <div
+        className="
+        login-box-container 
+        tbl:w-2/5
+        msm:w-full
+        lpt:w-2/5
+        msm:m-2
+        h-3/4 
+        border 
+        shadow 
+        rounded-sm 
+        bg-white"
+      >
+        <div className="elements-container flex flex-col justify-evenly items-center h-full w-full">
+          <Image />
+          <Title content="Chatify" tagline="A Simple Chat App" />
+          <Button text="Sign In With Google" icon="googleIcon" />
+          <Button text="Sign In With Github" icon="githubIcon" />
         </div>
       </div>
     </div>
