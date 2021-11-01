@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Image, Title, Button } from "Components";
+import { ChatEngine } from "react-chat-engine";
+import { useStore } from "Context/store";
+import { githubAuth, googleAuth } from "Context/actions/auth-actions";
 
 const Auth = () => {
+  const [state, dispatch] = useStore();
+  const { auth } = state;
+
+  useEffect(() => {
+    console.log(auth);
+  }, [auth]);
+
   return (
     <div
       className="
@@ -27,8 +37,16 @@ const Auth = () => {
         <div className="elements-container flex flex-col justify-evenly items-center h-full w-full">
           <Image />
           <Title content="Chatify" tagline="A Simple Chat App" />
-          <Button text="Sign In With Google" icon="googleIcon" />
-          <Button text="Sign In With Github" icon="githubIcon" />
+          <Button
+            click={() => googleAuth(dispatch)}
+            text={auth.isLoading ? "Signing.." : "Sign In With Google"}
+            icon={auth.isLoading ? "spinner" : "googleIcon"}
+          />
+          <Button
+            click={() => githubAuth(dispatch)}
+            text={auth.isLoading ? "Signing.." : "Sign In With Github"}
+            icon={auth.isLoading ? "spinner" : "githubIcon"}
+          />
         </div>
       </div>
     </div>

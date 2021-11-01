@@ -1,4 +1,10 @@
 export const initialStates = {
-  auth: {user: null},
+  auth: {
+    isLoading:false,
+    isSuccess:false,
+    isFail:false,
+    errorMessage:"",
+    user:[],
+  },
   chats: null,
 };

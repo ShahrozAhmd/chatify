@@ -1,12 +1,17 @@
 import * as actions from "../action-types";
-import { provider, auth } from "Configs/firebase";
-import { signInWithPopup } from "firebase/auth";
+import {
+  auth,
+  githubProvider,
+  googleProvider,
+  signInWithPopup,
+} from "Configs/firebase";
+
 
 // Auth acitons for google
-const googleAuthinIt = (data) => {
+const googleAuthinIt = () => {
   return {
     type: actions.GOOGLE_AUTH_INIT,
-    payload: data,
+
   };
 };
 
@@ -23,10 +28,10 @@ const googleAuthFail = (error) => {
   };
 };
 
-const googleAuth = (args, dispatch) => {
+const googleAuth = (dispatch) => {
   dispatch(googleAuthinIt());
 
-  signInWithPopup(auth, provider)
+  signInWithPopup(auth, googleProvider)
     .then((res) => {
       dispatch(googleAuthSuccess(res.user));
       console.log("Success:", res);
@@ -37,32 +42,39 @@ const googleAuth = (args, dispatch) => {
     });
 };
 
-//   Auth actions for facebook
+//   Auth actions for github
 
-const facebookAuthinIt = (data) => {
+const githubAuthinIt = (data) => {
   return {
-    type: actions.FACEBOOK_AUTH_INIT,
+    type: actions.GITHUB_AUTH_INIT,
     payload: data,
   };
 };
 
-const facebookAuthSuccess = (user) => {
+const githubAuthSuccess = (user) => {
   return {
-    type: actions.FACEBOOK_AUTH_SUCCESS,
+    type: actions.GITHUB_AUTH_SUCCESS,
     payload: user,
   };
 };
-const facebookAuthFail = (error) => {
+const githubAuthFail = (error) => {
   return {
-    type: actions.FACEBOOK_AUTH_FAIL,
+    type: actions.GITHUB_AUTH_FAIL,
     payload: error,
   };
 };
 
-const facebookAuth = (args, dispatch) => {
-  dispatch(facebookAuthinIt());
-  dispatch(facebookAuthSuccess());
-  dispatch(facebookAuthFail());
+const githubAuth = (dispatch) => {
+  dispatch(githubAuthinIt());
+  signInWithPopup(auth, githubProvider)
+    .then((res) => {
+      dispatch(githubAuthSuccess(res.user));
+      console.log("Success:", res);
+    })
+    .catch((err) => {
+      dispatch(githubAuthFail(err));
+      console.log("Fail:", err);
+    });
 };
 
-export { facebookAuth, googleAuth };
+export { githubAuth, googleAuth };
