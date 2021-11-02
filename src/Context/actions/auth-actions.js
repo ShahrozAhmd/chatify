@@ -28,12 +28,13 @@ const googleAuthFail = (error) => {
   };
 };
 
-const googleAuth = (dispatch) => {
+const googleAuth = (dispatch,history) => {
   dispatch(googleAuthinIt());
 
   signInWithPopup(auth, googleProvider)
     .then((res) => {
       dispatch(googleAuthSuccess(res.user));
+      history.push("/chat")
       console.log("Success:", res);
     })
     .catch((err) => {
@@ -72,7 +73,7 @@ const githubAuth = (dispatch) => {
       console.log("Success:", res);
     })
     .catch((err) => {
-      dispatch(githubAuthFail(err));
+      dispatch(githubAuthFail(err.message));
       console.log("Fail:", err);
     });
 };
