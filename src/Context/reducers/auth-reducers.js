@@ -6,13 +6,16 @@ const { auth } = initialStates;
 export const authReducer = (state = auth, action) => {
   switch (action.type) {
     case actions.GOOGLE_AUTH_INIT:
-      return { ...state, auth: { ...auth, isLoading: true } };
+      return {
+        ...state,
+        auth: { ...auth, isLoading: true, isGoogleLoading: true },
+      };
     case actions.GOOGLE_AUTH_SUCCESS:
       return {
         ...state,
         auth: {
           ...auth,
-          isLoading: false,
+          isGoogleLoading: false,
           isSuccess: true,
 
           user: action.payload,
@@ -23,7 +26,7 @@ export const authReducer = (state = auth, action) => {
         ...state,
         auth: {
           ...auth,
-          isLoading: false,
+          isGoogleLoading: false,
           isSuccess: false,
           isFail: true,
           errorMessage: action.payload,
@@ -31,13 +34,16 @@ export const authReducer = (state = auth, action) => {
         },
       };
     case actions.GITHUB_AUTH_INIT:
-      return { ...state, auth: { ...auth, isLoading: true } };
+      return {
+        ...state,
+        auth: { ...auth, isLoading: true, isGithubLoading: true },
+      };
     case actions.GITHUB_AUTH_SUCCESS:
       return {
         ...state,
         auth: {
           ...auth,
-          isLoading: false,
+          isGithubLoading: false,
           isSuccess: true,
 
           user: action.payload,
@@ -48,7 +54,7 @@ export const authReducer = (state = auth, action) => {
         ...state,
         auth: {
           ...auth,
-          isLoading: false,
+          isGithubLoading: false,
           isSuccess: false,
           isFail: true,
           errorMessage: action.payload,

@@ -39,13 +39,13 @@ const Auth = () => {
           <Title content="Chatify" tagline="A Simple Chat App" />
           <Button
             click={() => googleAuth(dispatch)}
-            text={auth.isLoading ? "Signing.." : "Sign In With Google"}
-            icon={auth.isLoading ? "spinner" : "googleIcon"}
+            text={auth.isGoogleLoading ? "Signing.." : "Sign In With Google"}
+            icon={auth.isGoogleLoading ? "spinner" : "googleIcon"}
           />
           <Button
             click={() => githubAuth(dispatch)}
-            text={auth.isLoading ? "Signing.." : "Sign In With Github"}
-            icon={auth.isLoading ? "spinner" : "githubIcon"}
+            text={auth.isGithubLoading ? "Signing.." : "Sign In With Github"}
+            icon={auth.isGithubLoading ? "spinner" : "githubIcon"}
           />
         </div>
       </div>

@@ -6,6 +6,7 @@ module.exports = {
       backgroundImage: {
         githubIcon: "url('/src/Assets/images/icons/github_icon.png')",
         googleIcon: "url('/src/Assets/images/icons/google_icon.png')",
+        spinner:"url('/src/Assets/images/icons/spinner.gif')"
       },
       backgroundSize: {},
     },

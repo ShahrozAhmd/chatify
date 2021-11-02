@@ -1,6 +1,7 @@
 export const initialStates = {
   auth: {
-    isLoading:false,
+    isGoogleLoading:false,
+    isGithubLoading:false,
     isSuccess:false,
     isFail:false,
     errorMessage:"",
