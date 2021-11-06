@@ -1,21 +1,16 @@
-import React, { useState,useEffect } from 'react'
-import Header from 'Components/Header/header'
-import { useStore } from 'Context/store'
+import React, { useState, useEffect } from "react";
+import Header from "Components/Header/header";
+import { useStore } from "Context/store";
 
-const  Chat = () => {
+const Chat = () => {
+  const [state, dispatch] = useStore();
+  const { auth, chat } = state;
 
-    const [state, dispatch] = useStore();
-    const {auth, chat} = state;
+  return (
+    <>
+      <Header />
+    </>
+  );
+};
 
-
-
-
-    return (
-        <>
-            <Header/>
-            
-        </>
-    )
-}
-
-export default Chat
+export default Chat;

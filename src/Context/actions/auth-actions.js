@@ -4,14 +4,13 @@ import {
   githubProvider,
   googleProvider,
   signInWithPopup,
+  signOut,
 } from "Configs/firebase";
-
 
 // Auth acitons for google
 const googleAuthinIt = () => {
   return {
     type: actions.GOOGLE_AUTH_INIT,
-
   };
 };
 
@@ -28,13 +27,13 @@ const googleAuthFail = (error) => {
   };
 };
 
-const googleAuth = (dispatch,history) => {
+const googleAuth = (dispatch, history) => {
   dispatch(googleAuthinIt());
 
   signInWithPopup(auth, googleProvider)
     .then((res) => {
       dispatch(googleAuthSuccess(res.user));
-      history.push("/chat")
+      history.push("/chat");
       console.log("Success:", res);
     })
     .catch((err) => {
@@ -77,5 +76,39 @@ const githubAuth = (dispatch) => {
       console.log("Fail:", err);
     });
 };
+// SIGNOUT ACTIONS
+const signoutInit = () => {
+  return {
+    type: actions.SIGNOUT_INIT,
+  };
+};
 
-export { githubAuth, googleAuth };
+const signoutSuccess = (response) => {
+  return {
+    type: actions.SIGNOUT_SUCCESS,
+    payload: response,
+  };
+};
+
+const signoutFail = (response) => {
+  return {
+    type: actions.SIGNOUT_FAIL,
+    payload: response,
+  };
+};
+
+const signout = (dispatch,history) => {
+  dispatch(signoutInit);
+  signOut(auth)
+    .then((response) => {
+      dispatch(signoutSuccess(response));
+      history.push("/");
+      console.log(response)
+    })
+    .catch((error) => {
+      dispatch(signoutFail(error));
+      console.log(error)
+    });
+};
+
+export { githubAuth, googleAuth, signout };
