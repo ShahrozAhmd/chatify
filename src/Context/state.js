@@ -1,13 +1,19 @@
 export const initialStates = {
   auth: {
-    isGoogleLoading:false,
-    isGithubLoading:false,
-    isSuccess:false,
-    isFail:false,
-    errorMessage:"",
-    user:[],
+    isGoogleLoading: false,
+    isGithubLoading: false,
+    isSuccess: false,
+    isFail: false,
+    errorMessage: "",
+    user: [],
     isSignout: false,
-    isSignoutLoading:false,
+    isSignoutLoading: false,
   },
-  chats: null,
+  chats: {
+    isUserCreated: false,
+    isSuccess: false,
+    isFail: false,
+    errorMessage: "",
+    user: [],
+  },
 };
