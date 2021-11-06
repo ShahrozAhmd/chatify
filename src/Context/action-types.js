@@ -6,3 +6,8 @@ export const GOOGLE_AUTH_FAIL = "GOOGLE_AUTH_FAIL";
 export const GITHUB_AUTH_INIT = "GITHUB_AUTH_INIT";
 export const GITHUB_AUTH_SUCCESS = "GITHUB_AUTH_SUCCESS";
 export const GITHUB_AUTH_FAIL = "GITHUB_AUTH_FAIL";
+
+// Action types for signout
+export const SIGNOUT_INIT = "SIGNOUT_INIT";
+export const SIGNOUT_SUCCESS = "SIGNOUT_SUCCESS";
+export const SIGNOUT_FAIL = "SIGNOUT_FAIL";
