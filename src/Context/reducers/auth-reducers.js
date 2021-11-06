@@ -5,6 +5,7 @@ const { auth } = initialStates;
 
 export const authReducer = (state = auth, action) => {
   switch (action.type) {
+    // GOOGLE LOGIN CASES
     case actions.GOOGLE_AUTH_INIT:
       return {
         ...state,
@@ -33,6 +34,7 @@ export const authReducer = (state = auth, action) => {
           user: [],
         },
       };
+    // GITHUB LOGIN CASES
     case actions.GITHUB_AUTH_INIT:
       return {
         ...state,
@@ -57,6 +59,31 @@ export const authReducer = (state = auth, action) => {
           isGithubLoading: false,
           isSuccess: false,
           isFail: true,
+          errorMessage: action.payload,
+          user: [],
+        },
+      };
+    // SIGN OUT CASES
+    case actions.SIGNOUT_INIT:
+      return {
+        ...state,
+        auth: { ...auth, isSignoutLoading: true },
+      };
+    case actions.SIGNOUT_SUCCESS:
+      return {
+        ...state,
+        auth: {
+          ...auth,
+          isSignoutLoading: false,
+          user: action.payload,
+        },
+      };
+    case actions.SIGNOUT_FAIL:
+      return {
+        ...state,
+        auth: {
+          ...auth,
+          isSignoutLoading: false,
           errorMessage: action.payload,
           user: [],
         },

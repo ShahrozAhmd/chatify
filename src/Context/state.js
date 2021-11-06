@@ -6,6 +6,8 @@ export const initialStates = {
     isFail:false,
     errorMessage:"",
     user:[],
+    isSignout: false,
+    isSignoutLoading:false,
   },
   chats: null,
 };
