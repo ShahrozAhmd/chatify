@@ -2,20 +2,44 @@ import React, { useState, useEffect } from "react";
 import Header from "Components/Header/header";
 import { useStore } from "Context/store";
 import { ChatEngine } from "react-chat-engine";
+import { createNewUser } from "Context/actions/chat-actions";
 
 const Chat = () => {
-  const [state, dispatch] = useStore();
-  const { auth, chat } = state;
+  const { authState, chatState, dispatchChat } = useStore();
+  const { chats } = chatState;
+  const { auth } = authState;
 
+  // console.log("chats state : ", chats)
+  useEffect(() => {
+    console.log("Use Effect is runnig")
+    if (auth.user && !auth.isSignout) {
+      createNewUser(dispatchChat, auth.user);
+    } else {
+      alert("Sign in first");
+    }
+  }, [auth.user]);
+  console.log(auth)
   return (
+    
     <>
       <Header />
       {/* <ChatEngine
-        height="100vh"
-        userName="LUser"
-        userSecret="abc"
-        projectID="077b20de-a730-46c8-8924-7296b5476cba"
-      /> */}
+          height="100vh"
+          userName={"shahroz"}
+          userSecret={"shahroz123"}
+          projectID={process.env.REACT_APP_PROJECT_ID}
+        /> */}
+      {chats.isSuccess ? (
+        
+        <ChatEngine
+          height="100vh"
+          userName={auth.user.displayName && auth.user.displayName }
+          userSecret={auth.user.uid && auth.user.uid}
+          projectID={process.env.REACT_APP_PROJECT_ID}
+        />
+      ) : (
+        "Loading..."
+      )}
     </>
   );
 };

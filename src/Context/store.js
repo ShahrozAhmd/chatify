@@ -5,10 +5,15 @@ Store.displayName = "Global Store";
 
 export const useStore = () => useContext(Store);
 
-const StoreProvider = ({ children, initialState, reducer }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+const StoreProvider = ({ children, initialState, reducer}) => {
+  
+  const {authReducer,chatReducer}  = reducer;
+  // const {auth,chats}  = initialState;
 
-  return <Store.Provider value={[state, dispatch]}>{children}</Store.Provider>;
+  const [authState, dispatchAuth] = useReducer(authReducer,initialState);
+  const [chatState, dispatchChat] = useReducer(chatReducer,initialState);
+
+  return <Store.Provider value={{authState,chatState, dispatchAuth,dispatchChat}}>{children}</Store.Provider>;
 };
 
 

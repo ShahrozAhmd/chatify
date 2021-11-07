@@ -5,15 +5,16 @@ export const initialStates = {
     isSuccess: false,
     isFail: false,
     errorMessage: "",
-    user: [],
+    user: {},
     isSignout: false,
     isSignoutLoading: false,
   },
   chats: {
+    isLoading:false,
     isUserCreated: false,
     isSuccess: false,
     isFail: false,
     errorMessage: "",
-    user: [],
+    user: {},
   },
 };
