@@ -9,7 +9,7 @@ const  Routes = () => {
     return (
         <>
         <Switch>
-            <Route exact path='/' component={Auth}/>
+            <Route  path='/' component={Auth}/>
             <Route exact path='/chat' component={Chat}/>
         </Switch>
             
