@@ -11,16 +11,13 @@ const Chat = () => {
 
   // console.log("chats state : ", chats)
   useEffect(() => {
-    console.log("Use Effect is runnig")
+    console.log("Use Effect is runnig");
     if (auth.user && !auth.isSignout) {
       createNewUser(dispatchChat, auth.user);
-    } else {
-      alert("Sign in first");
-    }
+    } 
   }, [auth.user]);
-  console.log(auth)
+  console.log(auth);
   return (
-    
     <>
       <Header />
       {/* <ChatEngine
@@ -29,14 +26,15 @@ const Chat = () => {
           userSecret={"shahroz123"}
           projectID={process.env.REACT_APP_PROJECT_ID}
         /> */}
-      {chats.isSuccess ? (
-        
-        <ChatEngine
-          height="100vh"
-          userName={auth.user.displayName && auth.user.displayName }
-          userSecret={auth.user.uid && auth.user.uid}
-          projectID={process.env.REACT_APP_PROJECT_ID}
-        />
+      {chats.isSuccess && !auth.isSignout ? (
+        auth.user? (
+          <ChatEngine
+            height="100vh"
+            userName={auth.user.displayName}
+            userSecret={auth.user.uid}
+            projectID={process.env.REACT_APP_PROJECT_ID}
+          />
+        ) : null
       ) : (
         "Loading..."
       )}
