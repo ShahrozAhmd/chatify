@@ -26,16 +26,14 @@ const Chat = () => {
           userSecret={"shahroz123"}
           projectID={process.env.REACT_APP_PROJECT_ID}
         /> */}
-      {chats.isSuccess && !auth.isSignout ? (
-        auth.user? (
+      {chats.isSuccess && !auth.isSignout && auth.user ?
           <ChatEngine
             height="100vh"
             userName={auth.user.displayName}
             userSecret={auth.user.uid}
             projectID={process.env.REACT_APP_PROJECT_ID}
           />
-        ) : null
-      ) : (
+          : (
         "Loading..."
       )}
     </>

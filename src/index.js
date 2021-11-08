@@ -6,7 +6,7 @@ import StoreProvider from "Context/store";
 import { authReducer } from "Context/reducers/auth-reducers";
 import chatReducer from "Context/reducers/chat-reducers";
 import { initialStates } from "Context/state";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 
 
 
