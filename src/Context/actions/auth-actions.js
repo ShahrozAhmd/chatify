@@ -64,12 +64,13 @@ const githubAuthFail = (error) => {
   };
 };
 
-const githubAuth = (dispatch) => {
+const githubAuth = (dispatch,history) => {
   dispatch(githubAuthinIt());
   signInWithPopup(auth, githubProvider)
     .then((res) => {
       dispatch(githubAuthSuccess(res.user));
-      console.log("Success:", res);
+      history.push("/chat");
+      console.log("Success:", res.user);
     })
     .catch((err) => {
       dispatch(githubAuthFail(err.message));

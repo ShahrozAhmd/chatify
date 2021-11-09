@@ -38,7 +38,7 @@ export const authReducer = (state = auth, action) => {
     case actions.GITHUB_AUTH_INIT:
       return {
         ...state,
-        auth: { ...auth, isLoading: true, isGithubLoading: true },
+        auth: { ...auth, isGithubLoading: true },
       };
     case actions.GITHUB_AUTH_SUCCESS:
       return {

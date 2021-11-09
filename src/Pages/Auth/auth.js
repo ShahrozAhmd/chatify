@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Image, Title, Button } from "Components";
-import { ChatEngine } from "react-chat-engine";
 import { useStore } from "Context/store";
 import { githubAuth, googleAuth } from "Context/actions/auth-actions";
 import { useHistory } from "react-router-dom";
@@ -9,13 +8,7 @@ const Auth = () => {
   let history = useHistory();
 
   const { authState, dispatchAuth } = useStore();
-  const {auth}  = authState;
-
-  // const { auth } = state;
-
-  // useEffect(() => {
-  //   console.log(auth);
-  // }, [auth]);
+  const { auth } = authState;
 
   return (
     <div
@@ -44,16 +37,12 @@ const Auth = () => {
           <Title content="Chatify" tagline="A Simple Chat App" />
           <Button
             click={() => googleAuth(dispatchAuth, history)}
-            text={
-              auth.isGoogleLoading ? "Signing.." : "Sign In With Google"
-            }
+            text={auth.isGoogleLoading ? "Signing.." : "Sign In With Google"}
             icon={auth.isGoogleLoading ? "spinner" : "googleIcon"}
           />
           <Button
             click={() => githubAuth(dispatchAuth, history)}
-            text={
-              auth.isGithubLoading ? "Signing.." : "Sign In With Github"
-            }
+            text={auth.isGithubLoading ? "Signing.." : "Sign In With Github"}
             icon={auth.isGithubLoading ? "spinner" : "githubIcon"}
           />
         </div>

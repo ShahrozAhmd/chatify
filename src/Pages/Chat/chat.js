@@ -9,7 +9,7 @@ const Chat = () => {
   const { chats } = chatState;
   const { auth } = authState;
 
-  // console.log("chats state : ", chats)
+
   useEffect(() => {
     console.log("Use Effect is runnig");
     if (auth.user && !auth.isSignout) {
@@ -20,12 +20,6 @@ const Chat = () => {
   return (
     <>
       <Header />
-      {/* <ChatEngine
-          height="100vh"
-          userName={"shahroz"}
-          userSecret={"shahroz123"}
-          projectID={process.env.REACT_APP_PROJECT_ID}
-        /> */}
       {chats.isSuccess && !auth.isSignout && auth.user ?
           <ChatEngine
             height="100vh"
