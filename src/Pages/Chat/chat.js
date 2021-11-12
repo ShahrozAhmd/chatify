@@ -9,25 +9,24 @@ const Chat = () => {
   const { chats } = chatState;
   const { auth } = authState;
 
-
   useEffect(() => {
     console.log("Use Effect is runnig");
     if (auth.user && !auth.isSignout) {
       createNewUser(dispatchChat, auth.user);
-    } 
+    }
   }, [auth.user]);
   console.log(auth);
   return (
     <>
       <Header />
-      {chats.isSuccess && !auth.isSignout && auth.user ?
-          <ChatEngine
-            height="100vh"
-            userName={auth.user.displayName}
-            userSecret={auth.user.uid}
-            projectID={process.env.REACT_APP_PROJECT_ID}
-          />
-          : (
+      {chats.isSuccess && !auth.isSignout && auth.user ? (
+        <ChatEngine
+          height="100vh"
+          userName={Object.keys(auth).length >  0 && auth.user.displayName}
+          userSecret={Object.keys(auth).length >  0 && auth.user.uid}
+          projectID={process.env.REACT_APP_PROJECT_ID}
+        />
+      ) : (
         "Loading..."
       )}
     </>
