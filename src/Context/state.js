@@ -10,7 +10,7 @@ export const initialStates = {
     isSignoutLoading: false,
   },
   chats: {
-    isLoading:false,
+    isLoading: false,
     isUserCreated: false,
     isSuccess: false,
     isFail: false,

@@ -31,7 +31,7 @@ export const authReducer = (state = auth, action) => {
           isSuccess: false,
           isFail: true,
           errorMessage: action.payload,
-          user: [],
+          user: {},
         },
       };
     // GITHUB LOGIN CASES
@@ -60,7 +60,7 @@ export const authReducer = (state = auth, action) => {
           isSuccess: false,
           isFail: true,
           errorMessage: action.payload,
-          user: [],
+          user: {},
         },
       };
     // SIGN OUT CASES
@@ -75,7 +75,7 @@ export const authReducer = (state = auth, action) => {
         auth: {
           ...auth,
           isSignoutLoading: false,
-          user: action.payload,
+          user: {},
         },
       };
     case actions.SIGNOUT_FAIL:
@@ -85,7 +85,7 @@ export const authReducer = (state = auth, action) => {
           ...auth,
           isSignoutLoading: false,
           errorMessage: action.payload,
-          user: [],
+          user: {},
         },
       };
     default:
