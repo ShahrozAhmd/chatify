@@ -3,6 +3,7 @@ import { Image, Title, Button } from "Components";
 import { useStore } from "Context/store";
 import { githubAuth, googleAuth } from "Context/actions/auth-actions";
 import { useHistory } from "react-router-dom";
+import ErrorBar from "Components/ErrorBar/error-bar";
 
 const Auth = () => {
   let history = useHistory();
@@ -33,6 +34,7 @@ const Auth = () => {
         bg-white"
       >
         <div className="elements-container flex flex-col justify-evenly items-center h-full w-full">
+         {auth.isFail && <ErrorBar errorMessage={auth.errorMessage}/>}
           <Image />
           <Title content="Chatify" tagline="A Simple Chat App" />
           <Button

@@ -37,7 +37,7 @@ const googleAuth = (dispatch, history) => {
       console.log("Success:", res);
     })
     .catch((err) => {
-      dispatch(googleAuthFail(err));
+      dispatch(googleAuthFail(err.message));
       console.log("Fail:", err);
     });
 };
